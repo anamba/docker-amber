@@ -12,7 +12,7 @@ Based on Phusion's excellent, developer-friendly [baseimage-docker](https://gith
 
 Includes:
 
-* Amber v0.11.1
+* Amber v0.11.2
 * Crystal 0.27.0
 * guardian
 
@@ -70,7 +70,7 @@ You get the idea. You'll want to create aliases or simple shell scripts to save 
 
 ```
 docker build -t anamba/crystal-amber-dev:latest .
-docker tag anamba/crystal-amber-dev:latest anamba/crystal-amber-dev:0.11.1
+docker tag anamba/crystal-amber-dev:latest anamba/crystal-amber-dev:0.11.2
 docker tag anamba/crystal-amber-dev:latest anamba/crystal-amber-dev:0.11
 docker push anamba/crystal-amber-dev
 ```
