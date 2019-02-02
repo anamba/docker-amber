@@ -8,12 +8,14 @@ Docker Hub: [anamba/crystal-amber-dev](https://hub.docker.com/r/anamba/crystal-a
 
 Based on Phusion's excellent, developer-friendly [baseimage-docker](https://github.com/phusion/baseimage-docker) image (based on 18.04 LTS aka Bionic).
 
+If this image is ever out of date, please open an issue.
+
 ## Contents
 
 Includes:
 
-* Amber v0.11.2
-* Crystal 0.27.0
+* Amber v0.11.3
+* Crystal 0.27.1
 * guardian
 
 Working dir is `/home/app/myapp` (user is `app`). Default port is 3000.
@@ -70,7 +72,7 @@ You get the idea. You'll want to create aliases or simple shell scripts to save 
 
 ```
 docker build -t anamba/crystal-amber-dev:latest .
-docker tag anamba/crystal-amber-dev:latest anamba/crystal-amber-dev:0.11.2
+docker tag anamba/crystal-amber-dev:latest anamba/crystal-amber-dev:0.11.3
 docker tag anamba/crystal-amber-dev:latest anamba/crystal-amber-dev:0.11
 docker push anamba/crystal-amber-dev
 ```

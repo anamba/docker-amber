@@ -9,4 +9,4 @@ groupmod -g $APP_GID app
 usermod -u $APP_UID -g $APP_GID app
 
 echo "chowning lib, node_modules directories (created from volumes)"
-cd /home/app/myapp && chown app: lib node_modules
+cd /home/app/myapp && mkdir -p lib node_modules && chown app: lib node_modules
