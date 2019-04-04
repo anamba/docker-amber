@@ -14,9 +14,10 @@ If this image is ever out of date, please open an issue.
 
 Includes:
 
-* Amber v0.11.3
-* Crystal 0.27.1
+* Amber v0.27.0
+* Crystal 0.27.2
 * guardian
+* Node 10.x w/gulp, yarn preinstalled
 
 Working dir is `/home/app/myapp` (user is `app`). Default port is 3000.
 
@@ -33,26 +34,22 @@ version: '3'
 
 services:
   web:
-    image: anamba/crystal-amber-dev:0.11  # latest 0.11.x version
+    image: anamba/crystal-amber-dev:0.27  # latest 0.27.x version
     ports:
       - '3000:3000'  # <-- change the first number to set your local port
     volumes:
-      - ./:/home/app/myapp:delegated               # NOTE: :delegated is a Docker for Mac feature
-      - node_modules:/home/app/myapp/node_modules  # keep node_modules off your local filesystem
+      - ./:/home/app/myapp:delegated  # NOTE: :delegated is a Docker for Mac feature
+      - /home/app/myapp/node_modules  # keep node_modules off your local filesystem
     environment:
       AMBER_ENV: development
       PORT: 3000
 
   db:
-    image: mariadb:10.3
+    image: mariadb:10.4
     volumes:
-      - db-data:/var/lib/mysql
+      - /var/lib/mysql
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: 1
-
-volumes:
-  db-data:
-  node_modules:
 ```
 
 From there, you can run `docker-compose up` to start the containers, then, in a separate terminal:
@@ -72,7 +69,7 @@ You get the idea. You'll want to create aliases or simple shell scripts to save 
 
 ```
 docker build -t anamba/crystal-amber-dev:latest .
-docker tag anamba/crystal-amber-dev:latest anamba/crystal-amber-dev:0.11.3
-docker tag anamba/crystal-amber-dev:latest anamba/crystal-amber-dev:0.11
+docker tag anamba/crystal-amber-dev:latest anamba/crystal-amber-dev:0.27.0
+docker tag anamba/crystal-amber-dev:latest anamba/crystal-amber-dev:0.27
 docker push anamba/crystal-amber-dev
 ```
