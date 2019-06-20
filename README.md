@@ -14,8 +14,8 @@ If this image becomes out of date (e.g. new Amber or Crystal release), please op
 
 Includes:
 
-* Crystal 0.28.0
-* Amber v0.28.0
+* Crystal 0.29.0
+* Amber v0.29.0
 * guardian
 * Node 10.x w/gulp, yarn preinstalled
 
@@ -34,7 +34,7 @@ version: '3'
 
 services:
   web:
-    image: anamba/crystal-amber-dev:0.28
+    image: anamba/crystal-amber-dev:0.29
     ports:
       - '3000:3000'  # <-- change the first number to set your local port
     volumes:
@@ -69,7 +69,7 @@ You get the idea. You'll want to create aliases or simple shell scripts to save 
 
 ```
 docker build -t anamba/crystal-amber-dev:latest .
-docker tag anamba/crystal-amber-dev:latest anamba/crystal-amber-dev:0.28.0
-docker tag anamba/crystal-amber-dev:latest anamba/crystal-amber-dev:0.28
+docker tag anamba/crystal-amber-dev:latest anamba/crystal-amber-dev:0.29.0
+docker tag anamba/crystal-amber-dev:latest anamba/crystal-amber-dev:0.29
 docker push anamba/crystal-amber-dev
 ```
