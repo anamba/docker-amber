@@ -8,14 +8,14 @@ Docker Hub: [anamba/crystal-amber-dev](https://hub.docker.com/r/anamba/crystal-a
 
 Based on Phusion's excellent, developer-friendly [baseimage-docker](https://github.com/phusion/baseimage-docker) image (based on 18.04 LTS aka Bionic).
 
-If this image becomes out of date (e.g. new Amber or Crystal release), please open an issue.
+If this image becomes out of date due to a new Amber or Crystal release, please open an issue.
 
 ## Contents
 
 Includes:
 
-* Crystal 0.29.0
-* Amber v0.29.0
+* Crystal 0.30.1
+* Amber v0.30.0
 * guardian
 * Node 10.x w/gulp, yarn preinstalled
 
@@ -34,7 +34,7 @@ version: '3'
 
 services:
   web:
-    image: anamba/crystal-amber-dev:0.29
+    image: anamba/crystal-amber-dev:0.30
     ports:
       - '3000:3000'  # <-- change the first number to set your local port
     volumes:
@@ -68,8 +68,8 @@ You get the idea. You'll want to create aliases or simple shell scripts to save 
 (notes for myself)
 
 ```
-docker build -t anamba/crystal-amber-dev:latest .
-docker tag anamba/crystal-amber-dev:latest anamba/crystal-amber-dev:0.29.0
-docker tag anamba/crystal-amber-dev:latest anamba/crystal-amber-dev:0.29
+docker build --no-cache -t anamba/crystal-amber-dev:latest .
+docker tag anamba/crystal-amber-dev:latest anamba/crystal-amber-dev:0.30.0
+docker tag anamba/crystal-amber-dev:latest anamba/crystal-amber-dev:0.30
 docker push anamba/crystal-amber-dev
 ```

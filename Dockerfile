@@ -27,15 +27,15 @@ WORKDIR /tmp
 # npm global packages
 RUN npm -g i gulp
 
-# Pick a Crystal version and install the .deb: https://github.com/crystal-lang/crystal/releases
-RUN curl -sL https://github.com/crystal-lang/crystal/releases/download/0.29.0/crystal_0.29.0-1_amd64.deb > crystal.deb
+# Pick a Crystal version and install the amd64 .deb: https://github.com/crystal-lang/crystal/releases
+RUN curl -sL https://github.com/crystal-lang/crystal/releases/download/0.30.1/crystal_0.30.1-1_amd64.deb > crystal.deb
 RUN apt-get install -y ./crystal.deb
 
 # Build guardian
 RUN git clone https://github.com/f/guardian.git && cd guardian && crystal build src/guardian.cr --release && cp guardian /usr/bin/
 
 # Pick an Amber version: https://github.com/amberframework/amber/releases
-RUN curl -sL https://github.com/amberframework/amber/archive/v0.29.0.tar.gz | tar xz
+RUN curl -sL https://github.com/amberframework/amber/archive/v0.30.0.tar.gz | tar xz
 RUN cd amber-*/ && make && make install
 
 # Add app user
