@@ -15,7 +15,7 @@ RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confnew"
 # Install other packages we depend on
 RUN apt-get install -y tzdata   # base packages: most setups need these
 RUN apt-get install -y bzip2 git wget unzip zip  # cmd line utilities
-RUN apt-get install -y nodejs yarn
+RUN apt-get install -y nodejs
 RUN apt-get install -y libssl-dev libxml2-dev libyaml-dev libgmp-dev libreadline-dev  # crystal deps
 RUN apt-get install -y build-essential                                                # amber deps
 RUN apt-get install -y libsqlite3-dev libpq-dev libmysqlclient-dev                    # db deps
@@ -24,18 +24,16 @@ RUN apt-get autoremove -y
 
 WORKDIR /tmp
 
-# npm global packages
-RUN npm -g i gulp
-
 # Pick a Crystal version and install the amd64 .deb: https://github.com/crystal-lang/crystal/releases
-RUN curl -sL https://github.com/crystal-lang/crystal/releases/download/0.30.1/crystal_0.30.1-1_amd64.deb > crystal.deb
+RUN curl -sL https://github.com/crystal-lang/crystal/releases/download/0.31.1/crystal_0.31.1-1_amd64.deb > crystal.deb
+# RUN curl -sL https://github.com/crystal-lang/crystal/releases/download/0.31.0/crystal_0.31.0-1_amd64.deb > crystal.deb
 RUN apt-get install -y ./crystal.deb
 
 # Build guardian
 RUN git clone https://github.com/f/guardian.git && cd guardian && crystal build src/guardian.cr --release && cp guardian /usr/bin/
 
 # Pick an Amber version: https://github.com/amberframework/amber/releases
-RUN curl -sL https://github.com/amberframework/amber/archive/v0.30.0.tar.gz | tar xz
+RUN curl -sL https://github.com/amberframework/amber/archive/v0.30.1.tar.gz | tar xz
 RUN cd amber-*/ && make && make install
 
 # Add app user

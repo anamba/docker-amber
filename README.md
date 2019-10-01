@@ -14,10 +14,10 @@ If this image becomes out of date due to a new Amber or Crystal release, please 
 
 Includes:
 
-* Crystal 0.30.1
-* Amber v0.30.0
+* Crystal 0.31.1
+* Amber v0.30.1
 * guardian
-* Node 10.x w/gulp, yarn preinstalled
+* Node 10.x
 
 Working dir is `/home/app/myapp` (user is `app`). Default port is 3000.
 
@@ -69,7 +69,7 @@ You get the idea. You'll want to create aliases or simple shell scripts to save 
 
 ```
 docker build --no-cache -t anamba/crystal-amber-dev:latest .
-docker tag anamba/crystal-amber-dev:latest anamba/crystal-amber-dev:0.30.0
+docker tag anamba/crystal-amber-dev:latest anamba/crystal-amber-dev:0.30.1
 docker tag anamba/crystal-amber-dev:latest anamba/crystal-amber-dev:0.30
 docker push anamba/crystal-amber-dev
 ```
