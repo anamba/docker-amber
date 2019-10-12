@@ -15,7 +15,7 @@ If this image becomes out of date due to a new Amber or Crystal release, please 
 Includes:
 
 * Crystal 0.31.1
-* Amber v0.30.1
+* Amber v0.31.0
 * guardian
 * Node 10.x
 
@@ -69,7 +69,7 @@ You get the idea. You'll want to create aliases or simple shell scripts to save 
 
 ```
 docker build --no-cache -t anamba/crystal-amber-dev:latest .
-docker tag anamba/crystal-amber-dev:latest anamba/crystal-amber-dev:0.30.1
-docker tag anamba/crystal-amber-dev:latest anamba/crystal-amber-dev:0.30
+docker tag anamba/crystal-amber-dev:latest anamba/crystal-amber-dev:0.31.0
+docker tag anamba/crystal-amber-dev:latest anamba/crystal-amber-dev:0.31
 docker push anamba/crystal-amber-dev
 ```
