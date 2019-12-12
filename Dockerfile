@@ -5,7 +5,7 @@ FROM phusion/baseimage:0.11
 LABEL maintainer="bbsoftware@biggerbird.com"
 
 # Set up 3rd party repos
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 RUN curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list
 
@@ -16,17 +16,20 @@ RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confnew"
 RUN apt-get install -y tzdata   # base packages: most setups need these
 RUN apt-get install -y bzip2 git wget unzip zip  # cmd line utilities
 RUN apt-get install -y nodejs
-RUN apt-get install -y libssl-dev libxml2-dev libyaml-dev libgmp-dev libreadline-dev  # crystal deps
-RUN apt-get install -y build-essential                                                # amber deps
-RUN apt-get install -y libsqlite3-dev libpq-dev libmysqlclient-dev                    # db deps
+
+# crystal runtime and build dependencies
+RUN apt-get install -y libssl-dev libxml2-dev libyaml-dev libgmp-dev libreadline-dev
+RUN apt-get install -y libbsd-dev libedit-dev libevent-dev libgmpxx4ldbl automake libtool git llvm-7 llvm-7-dev libpcre3-dev build-essential
+
+# db shard dependencies
+RUN apt-get install -y libsqlite3-dev libpq-dev libmysqlclient-dev
 
 RUN apt-get autoremove -y
 
 WORKDIR /tmp
 
 # Pick a Crystal version and install the amd64 .deb: https://github.com/crystal-lang/crystal/releases
-RUN curl -sL https://github.com/crystal-lang/crystal/releases/download/0.31.1/crystal_0.31.1-1_amd64.deb > crystal.deb
-# RUN curl -sL https://github.com/crystal-lang/crystal/releases/download/0.31.0/crystal_0.31.0-1_amd64.deb > crystal.deb
+RUN curl -sL https://github.com/crystal-lang/crystal/releases/download/0.32.0/crystal_0.32.0-1_amd64.deb > crystal.deb
 RUN apt-get install -y ./crystal.deb
 
 # Build guardian

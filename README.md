@@ -14,17 +14,18 @@ If this image becomes out of date due to a new Amber or Crystal release, please 
 
 Includes:
 
-* Crystal 0.31.1
+* Crystal 0.32.0
 * Amber v0.31.0
 * guardian
-* Node 10.x
+* Node 12.x
 
 Working dir is `/home/app/myapp` (user is `app`). Default port is 3000.
 
 ## Versioning
 
-* Docker tags track Amber versions.
-* Crystal version is selected based on what is supported by the target Amber version.
+* Docker tags track Amber minor versions.
+* Crystal version is selected for compatibility with Amber version.
+* `latest` may not necessarily have a corresponding version tag.
 
 ## How to use
 
@@ -34,7 +35,7 @@ version: '3'
 
 services:
   web:
-    image: anamba/crystal-amber-dev:0.30
+    image: anamba/crystal-amber-dev:0.31
     ports:
       - '3000:3000'  # <-- change the first number to set your local port
     volumes:
