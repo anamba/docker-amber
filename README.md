@@ -14,7 +14,7 @@ If this image becomes out of date due to a new Amber or Crystal release, please 
 
 Includes:
 
-* Crystal 0.32.0
+* Crystal 0.32.1
 * Amber v0.31.0
 * guardian
 * Node 12.x
