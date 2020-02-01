@@ -32,7 +32,7 @@ RUN apt-get install -y ./crystal.deb
 RUN git clone https://github.com/f/guardian.git && cd guardian && crystal build src/guardian.cr --release && cp guardian /usr/bin/
 
 # Pick an Amber version: https://github.com/amberframework/amber/releases
-RUN curl -sL https://github.com/amberframework/amber/archive/v0.31.0.tar.gz | tar xz
+RUN curl -sL https://github.com/amberframework/amber/archive/v0.32.0.tar.gz | tar xz
 RUN cd amber-*/ && make && make install
 
 # Add app user
