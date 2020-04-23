@@ -15,9 +15,12 @@ RUN apt-get install -y tzdata
 # cmd line utilities
 RUN apt-get install -y bzip2 git wget unzip zip
 
-# crystal runtime and build dependencies
-RUN apt-get install -y libssl-dev libxml2-dev libyaml-dev libgmp-dev libreadline-dev
-RUN apt-get install -y libbsd-dev libedit-dev libevent-dev libgmpxx4ldbl automake libtool git llvm-7 llvm-7-dev libpcre3-dev build-essential
+# crystal runtime dependencies: https://crystal-lang.org/install/on_ubuntu/
+RUN apt-get install -y libssl-dev libxml2-dev libyaml-dev libgmp-dev libreadline-dev libz-dev
+
+# crystal build dependencies: https://github.com/crystal-lang/crystal/wiki/All-required-libraries#ubuntu
+RUN apt-get install -y libbsd-dev libedit-dev libevent-dev libgmpxx4ldbl automake libtool llvm-8 llvm-8-dev lld-8 libpcre3-dev build-essential
+RUN ln -sf /usr/bin/ld.lld-8 /usr/bin/ld.lld
 
 # db shard dependencies
 RUN apt-get install -y libsqlite3-dev libpq-dev libmysqlclient-dev
@@ -25,14 +28,15 @@ RUN apt-get install -y libsqlite3-dev libpq-dev libmysqlclient-dev
 WORKDIR /tmp
 
 # Pick a Crystal version and install the amd64 .deb: https://github.com/crystal-lang/crystal/releases
-RUN curl -sL https://github.com/crystal-lang/crystal/releases/download/0.32.1/crystal_0.32.1-1_amd64.deb > crystal.deb
+# RUN curl -sL https://github.com/crystal-lang/crystal/releases/download/0.33.0/crystal_0.33.0-1_amd64.deb > crystal.deb
+RUN curl -sL https://github.com/crystal-lang/crystal/releases/download/0.34.0/crystal_0.34.0-1_amd64.deb > crystal.deb
 RUN apt-get install -y ./crystal.deb
 
 # Build guardian
 RUN git clone https://github.com/f/guardian.git && cd guardian && crystal build src/guardian.cr --release && cp guardian /usr/bin/
 
 # Pick an Amber version: https://github.com/amberframework/amber/releases
-RUN curl -sL https://github.com/amberframework/amber/archive/v0.32.0.tar.gz | tar xz
+RUN curl -sL https://github.com/amberframework/amber/archive/v0.34.0.tar.gz | tar xz
 RUN cd amber-*/ && make && make install
 
 # Add app user
