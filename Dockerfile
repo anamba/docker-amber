@@ -1,5 +1,5 @@
 # See https://github.com/phusion/baseimage-docker/releases for a list of releases.
-FROM phusion/baseimage:0.11
+FROM phusion/baseimage:bionic-1.0.0
 LABEL maintainer="bbsoftware@biggerbird.com"
 
 # Install nodejs
@@ -28,15 +28,15 @@ RUN apt-get install -y libsqlite3-dev libpq-dev libmysqlclient-dev
 WORKDIR /tmp
 
 # Pick a Crystal version and install the amd64 .deb: https://github.com/crystal-lang/crystal/releases
-# RUN curl -sL https://github.com/crystal-lang/crystal/releases/download/0.33.0/crystal_0.33.0-1_amd64.deb > crystal.deb
-RUN curl -sL https://github.com/crystal-lang/crystal/releases/download/0.34.0/crystal_0.34.0-1_amd64.deb > crystal.deb
+# RUN curl -sL https://github.com/crystal-lang/crystal/releases/download/0.34.0/crystal_0.34.0-1_amd64.deb > crystal.deb
+RUN curl -sL https://github.com/crystal-lang/crystal/releases/download/0.35.0/crystal_0.35.0-1_amd64.deb > crystal.deb
 RUN apt-get install -y ./crystal.deb
 
 # Build guardian
 RUN git clone https://github.com/f/guardian.git && cd guardian && crystal build src/guardian.cr --release && cp guardian /usr/bin/
 
 # Pick an Amber version: https://github.com/amberframework/amber/releases
-RUN curl -sL https://github.com/amberframework/amber/archive/v0.34.0.tar.gz | tar xz
+RUN curl -sL https://github.com/amberframework/amber/archive/v0.35.0.tar.gz | tar xz
 RUN cd amber-*/ && make && make install
 
 # Add app user
