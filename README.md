@@ -6,7 +6,7 @@
 
 Docker Hub: [anamba/crystal-amber-dev](https://hub.docker.com/r/anamba/crystal-amber-dev/)
 
-Based on Phusion's excellent, developer-friendly [baseimage-docker](https://github.com/phusion/baseimage-docker) image. Based on Ubuntu 18.04 LTS Bionic (but may switch to Focal in the near future).
+Based on Phusion's excellent, developer-friendly [baseimage-docker](https://github.com/phusion/baseimage-docker) image. Now based on Ubuntu 20.04 LTS Focal.
 
 If this image becomes out of date due to a new Amber or Crystal release, please open an issue.
 

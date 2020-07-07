@@ -1,5 +1,5 @@
 # See https://github.com/phusion/baseimage-docker/releases for a list of releases.
-FROM phusion/baseimage:bionic-1.0.0
+FROM phusion/baseimage:focal-1.0.0-alpha1-amd64
 LABEL maintainer="bbsoftware@biggerbird.com"
 
 # Install nodejs
