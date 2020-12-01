@@ -3,7 +3,7 @@ FROM phusion/baseimage:focal-1.0.0-alpha1-amd64
 LABEL maintainer="bbsoftware@biggerbird.com"
 
 # Install nodejs
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 RUN apt-get install -y nodejs
 
 # Update packages

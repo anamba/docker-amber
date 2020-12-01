@@ -17,7 +17,7 @@ Includes:
 * Crystal 0.35.1
 * Amber v0.35.0
 * guardian
-* Node 12.x
+* Node 14
 
 Working dir is `/home/app/myapp` (user is `app`). Default port is 3000.
 
